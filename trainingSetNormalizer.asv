@@ -1,0 +1,9 @@
+trainingSets = ( dir('**/*trainingSet*.mat') );
+for trainingSetIdx = 1:size(trainingSets,1)
+    load(fullfile(trainingSet(trainingSetIdx).folder, trainingSet(trainingSetIdx).name));
+    
+    table.power_std = normalize(table.power_std);
+    %Sublime magic
+    
+    save(    
+end
