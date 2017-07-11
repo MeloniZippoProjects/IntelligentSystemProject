@@ -1,11 +1,11 @@
 source_folder = 'restructured_dataset';
-subfolders = {'dati_buoni'; 'dati_cattivi'};
+subfolders = {'dati_buoni'}; %'dati_cattivi'};
 target_folder = 'features_dataset';
 
 orientations = ['H', 'V'];
 dynamicCases = ['I', 'U', 'P'];
 
-samplingFactor = 12;
+samplingFactor = 10;
 
 root = pwd;
 
@@ -33,16 +33,21 @@ for subfolder_idx = 1 : size(subfolders, 1)
         %Dynamic case
         baseIdx = 1;        
         for dynamicCase = dynamicCases
-                powerFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).power);
-                phaseFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).phase);
+                powerFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).power, data.dynamic.(orientation).(dynamicCase).timestamps, samplingFactor);
+                phaseFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).phase, data.dynamic.(orientation).(dynamicCase).timestamps, samplingFactor);
 
                 idx = baseIdx : baseIdx + 9; 
-                table.power_std(idx) = powerFeatures.std;
-                table.power_mean(idx) = powerFeatures.mean;
-                table.power_median(idx) = powerFeatures.median;
-                table.phase_std(idx) = phaseFeatures.std;
-                table.phase_mean(idx) = phaseFeatures.mean;
-                table.phase_median(idx) = phaseFeatures.median;
+                table.power_std(idx,:) = powerFeatures.std;
+                table.power_mean(idx,:) = powerFeatures.mean;
+                table.power_median(idx,:) = powerFeatures.median;
+                table.power_incRatio(idx,:) = powerFeatures.incRatio;
+                table.power_midPoints(idx,:) = powerFeatures.midPoints;
+                
+                table.phase_std(idx,:) = phaseFeatures.std;
+                table.phase_mean(idx,:) = phaseFeatures.mean;
+                table.phase_median(idx,:) = phaseFeatures.median;
+                table.phase_incRatio(idx,:) = phaseFeatures.incRatio;
+                table.phase_midPoints(idx,:) = phaseFeatures.midPoints;
 
                 val = [-1,-1,-1];
                 if dynamicCase == 'I'
