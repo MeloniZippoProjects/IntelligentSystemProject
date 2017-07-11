@@ -7,9 +7,5 @@ trainInput = [
 trainOutput = trainTable.table.out;
 
 testInput = [
-    testTable.table.power_std, 
-    testTable.table.phase_std, 
-    testTable.table.power_mean,
-    testTable.table.phase_mean
-    ];
+    testTable.table.power_std, testTable.table.phase_std, testTable.table.power_mean, testTable.table.phase_mean ];
 testOutput = testTable.table.out;

@@ -5,36 +5,30 @@ target_folder = 'features_dataset';
 orientations = ['H', 'V'];
 dynamicCases = ['I', 'U', 'P'];
 
-samplingFactor = 12;
-
 root = pwd;
 
 for subfolder_idx = 1 : size(subfolders, 1)
-   subfolder = subfolders(subfolder_idx);
+    subfolder = subfolders(subfolder_idx);
    
-   curr_source_folder = fullfile(root, source_folder, subfolder);
-   cd(curr_source_folder{1});
-   load('data.mat')
-   
+    curr_source_folder = fullfile(root, source_folder, subfolder);
+    cd(curr_source_folder{1});
+    load('data.mat')
    
     for orientation = orientations
         table = struct();
-        table.power_std = zeros(30,samplingFactor);
-        table.power_mean = zeros(30,samplingFactor);
-        table.power_median = zeros(30,samplingFactor);
-        table.phase_std = zeros(30,samplingFactor);
-        table.phase_mean = zeros(30,samplingFactor);
-        table.phase_median = zeros(30,samplingFactor);
+        table.power_std = zeros(30,1);
+        table.power_mean = zeros(30,1);
+        table.power_median = zeros(30,1);
+        table.phase_std = zeros(30,1);
+        table.phase_mean = zeros(30,1);
+        table.phase_median = zeros(30,1);
         table.out = zeros(30,3);
-            
         
-            
-
         %Dynamic case
         baseIdx = 1;        
         for dynamicCase = dynamicCases
-                powerFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).power);
-                phaseFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).phase);
+                powerFeatures = extractFeatures(data.dynamic.(orientation).(dynamicCase).power);
+                phaseFeatures = extractFeatures(data.dynamic.(orientation).(dynamicCase).phase);
 
                 idx = baseIdx : baseIdx + 9; 
                 table.power_std(idx) = powerFeatures.std;

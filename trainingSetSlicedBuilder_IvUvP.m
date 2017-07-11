@@ -33,30 +33,30 @@ for subfolder_idx = 1 : size(subfolders, 1)
         %Dynamic case
         baseIdx = 1;        
         for dynamicCase = dynamicCases
-            powerFeatures = extractFeatures(data.dynamic.(orientation).(dynamicCase).power);
-            phaseFeatures = extractFeatures(data.dynamic.(orientation).(dynamicCase).phase);
+                powerFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).power);
+                phaseFeatures = extractSlicedFeatures(data.dynamic.(orientation).(dynamicCase).phase);
 
-            idx = baseIdx : baseIdx + 9; 
-            table.power_std(idx) = powerFeatures.std;
-            table.power_mean(idx) = powerFeatures.mean;
-            table.power_median(idx) = powerFeatures.median;
-            table.phase_std(idx) = phaseFeatures.std;
-            table.phase_mean(idx) = phaseFeatures.mean;
-            table.phase_median(idx) = phaseFeatures.median;
+                idx = baseIdx : baseIdx + 9; 
+                table.power_std(idx) = powerFeatures.std;
+                table.power_mean(idx) = powerFeatures.mean;
+                table.power_median(idx) = powerFeatures.median;
+                table.phase_std(idx) = phaseFeatures.std;
+                table.phase_mean(idx) = phaseFeatures.mean;
+                table.phase_median(idx) = phaseFeatures.median;
 
-            val = [-1,-1,-1];
-            if dynamicCase == 'I'
-                val = [1,0,0];
-            elseif dynamicCase == 'U'
-                val = [0,1,0];
-            elseif dynamicCase == 'P'
-                val = [0,0,1];
-            end
+                val = [-1,-1,-1];
+                if dynamicCase == 'I'
+                    val = [1,0,0];
+                elseif dynamicCase == 'U'
+                    val = [0,1,0];
+                elseif dynamicCase == 'P'
+                    val = [0,0,1];
+                end
 
 
-            table.out(idx,:) = ones(10,3).* val;
+                table.out(idx,:) = ones(10,3).* val;
 
-            baseIdx = baseIdx + 10;
+                baseIdx = baseIdx + 10;
         end
     end
        dest_folder = fullfile(root, target_folder, subfolder);
