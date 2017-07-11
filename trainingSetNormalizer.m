@@ -1,7 +1,7 @@
-trainingSets = ( dir('**/*trainingSet*.mat') );
+trainingSets = ( dir('**/trainingSet*.mat') );
 for trainingSetIdx = 1:size(trainingSets,1)
-    setFolder = trainingSet(trainingSetIdx).folder;
-    setName = trainingSet(trainingSetIdx).name;
+    setFolder = trainingSets(trainingSetIdx).folder;
+    setName = trainingSets(trainingSetIdx).name;
     
     load(fullfile(setFolder, setName));
     
