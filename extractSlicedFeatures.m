@@ -18,12 +18,12 @@ function [ output_struct ] = extractSlicedFeatures( input_cell, timestamps, samp
         
         currSize = size(currVector,1);
         
-        sampleSize = ceil(currSize/samplingFactor);      
+        sampleSize = floor(currSize/samplingFactor);      
         
         for sampleIdx = 1 : samplingFactor
         
             idxA = (sampleIdx -  1)*sampleSize +1;
-            idxB = min( (sampleIdx)*sampleSize, currSize);
+            idxB = (sampleIdx)*sampleSize;
             
             std_vec(cellIdx, sampleIdx) = std(currVector(idxA:idxB));
             mean_vec(cellIdx, sampleIdx) = mean(currVector(idxA:idxB));

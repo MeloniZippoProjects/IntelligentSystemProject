@@ -5,7 +5,7 @@ target_folder = 'features_dataset';
 orientations = ['H', 'V'];
 dynamicCases = ['I', 'U', 'P'];
 
-samplingFactor = 10;
+samplingFactor = 8;
 
 root = pwd;
 
@@ -67,7 +67,7 @@ for subfolder_idx = 1 : size(subfolders, 1)
        dest_folder = fullfile(root, target_folder, subfolder);
        mkdir(dest_folder{1});
 
-       save(fullfile(dest_folder{1}, ['trainingSet_IvUvP_', orientation, '.mat']), 'table');
+       save(fullfile(dest_folder{1}, ['trainingSlicedSet_IvUvP_', orientation, '.mat']), 'table');
 end
    
 cd(root);

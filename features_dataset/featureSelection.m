@@ -1,0 +1,1 @@
+inmodel = sequentialfs(@patternNetwork,trainInput,trainOutput);

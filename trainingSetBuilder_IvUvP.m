@@ -5,6 +5,8 @@ target_folder = 'features_dataset';
 orientations = ['H', 'V'];
 dynamicCases = ['I', 'U', 'P'];
 
+plotGraphs = true;
+
 root = pwd;
 
 for subfolder_idx = 1 : size(subfolders, 1)
@@ -51,6 +53,7 @@ for subfolder_idx = 1 : size(subfolders, 1)
                 table.out(idx,:) = ones(10,3).* val;
 
                 baseIdx = baseIdx + 10;
+                
         end
     end
        dest_folder = fullfile(root, target_folder, subfolder);
