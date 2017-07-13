@@ -1,4 +1,7 @@
-source_folder = 'restructured_dataset';
+%source_folder = 'restructured_dataset';
+%source_folder = 'exp_smoothed_dataset';
+source_folder = 'mov_smoothed_dataset';
+
 subfolders = {'dati_buoni'; 'dati_cattivi'};
 target_folder = 'features_dataset';
 
@@ -16,6 +19,9 @@ for subfolder_idx = 1 : size(subfolders, 1)
     cd(curr_source_folder{1});
     load('data.mat')
     
+    mkdir plots;
+    cd plots;
+
     plotSignal(data.static, 'static_');
    
     for orientation = orientations
