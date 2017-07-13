@@ -12,7 +12,7 @@ testTable = load('dati_buoni/trainingSlicedSet_SvD_V.mat');
 
 %correlazione phase_std&output = -0.9936, basta solo phase_std
 
-trainInput = [trainTable.table.phase_std];
+trainInput = [trainTable.table.power_std, trainTable.table.phase_std];
 %trainInput = [trainTable.table.power_std, trainTable.table.power_mean, trainTable.table.phase_std, trainTable.table.phase_mean];
 
 trainOutput = trainTable.table.out_isStatic;
