@@ -4,17 +4,19 @@ function [ output_struct ] = extractSlicedFeatures( input_cell, timestamps, samp
     
     cellSize = size(input_cell, 2);
     
+    integral_vec = zeros(cellSize, samplingFactor);
     std_vec = zeros(cellSize, samplingFactor);
     mean_vec = zeros(cellSize, samplingFactor);
     median_vec = zeros(cellSize, samplingFactor);
     incRatio_vec = zeros(cellSize, samplingFactor);
     midPoints_vec = zeros(cellSize, samplingFactor);
-    
-    
+        
     for cellIdx = 1 : cellSize
         
         currVector = input_cell{cellIdx};
         currTimes = timestamps{cellIdx};
+        
+        integral_vec(cellIdx, :) = normalizedIntegration(currVector, currTimes, samplingFactor);
         
         currSize = size(currVector,1);
         
@@ -33,11 +35,10 @@ function [ output_struct ] = extractSlicedFeatures( input_cell, timestamps, samp
             incRatio_vec(cellIdx, sampleIdx) = (currVector(idxB) - currVector(idxA))/timeElapsed;
             
             midPoints_vec(cellIdx, sampleIdx) = (currTimes(idxA) + currTimes(idxB))/2;
-            
-            
         end
     end
     
+    output_struct.integral = integral_vec;
     output_struct.std = std_vec;
     output_struct.mean = mean_vec;
     output_struct.median = median_vec;
