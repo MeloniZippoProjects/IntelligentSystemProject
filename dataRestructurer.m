@@ -30,8 +30,10 @@ for subfolder_idx = 1 : size(subfolders, 1)
             data.dynamic.(Orientazione_tag_mobile).(Azione(1)).power, Inventario.(tagMobile).RSSITag ];
         data.dynamic.(Orientazione_tag_mobile).(Azione(1)).phase = [
             data.dynamic.(Orientazione_tag_mobile).(Azione(1)).phase, Inventario.(tagMobile).FaseTag ]; 
+        timestamp = Inventario.(tagMobile).TempoTag;
+        timestamp = timestamp - timestamp(1);
         data.dynamic.(Orientazione_tag_mobile).(Azione(1)).timestamps = [
-            data.dynamic.(Orientazione_tag_mobile).(Azione(1)).timestamps, Inventario.(tagMobile).TempoTag ]; 
+            data.dynamic.(Orientazione_tag_mobile).(Azione(1)).timestamps, timestamp ]; 
    end
    
    dest_folder = fullfile(root, target_folder, subfolder);
