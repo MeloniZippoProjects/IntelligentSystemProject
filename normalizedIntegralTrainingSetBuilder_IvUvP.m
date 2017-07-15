@@ -5,7 +5,6 @@ target_folder = 'features_dataset';
 orientations = ['H', 'V'];
 dynamicCases = ['I', 'U', 'P'];
 
-samplingFactor = 8;
 
 root = pwd;
 

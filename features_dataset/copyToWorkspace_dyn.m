@@ -11,7 +11,10 @@ testTable = load('features_dataset/dati_cattivi/trainingSet_IvUvP_V.mat');
 
 
 
-trainInput = [trainTable.table.power_integral, trainTable.table.power_std, trainTable.table.power_mean, trainTable.table.phase_integral, trainTable.table.phase_std, trainTable.table.phase_mean];
+%trainInput = [trainTable.table.power_integral, trainTable.table.power_std, trainTable.table.power_mean, trainTable.table.phase_integral, trainTable.table.phase_std, trainTable.table.phase_mean];
+
+
+trainInput = [trainTable.table.power_mean];
 
 trainOutput = trainTable.table.out;
 
