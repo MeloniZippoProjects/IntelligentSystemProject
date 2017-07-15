@@ -9,7 +9,7 @@ function [ normalizedIntegrationVector ] = normalizedIntegration( dataVector, ti
     timeDistances(n) = timeDistances(n-1);
     
     normalizedDataVector = (dataVector-mean(dataVector))/std(dataVector);
-    
+        
     for timeSlice = 1:timeSlices
         startIdx = (timeSlice - 1)*sliceSize + 1;
         endIdx = timeSlice*sliceSize;
