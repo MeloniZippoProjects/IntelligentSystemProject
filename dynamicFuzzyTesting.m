@@ -1,4 +1,4 @@
-trainTable = load('features_dataset/dati_buoni/trainingSlicedSet_V.mat');
+trainTable = load('features_dataset/dati_buoni/trainingSlicedSet_H.mat');
 
 trainInput = [trainTable.table.power_integral];
 trainInput = trainInput(31:60,:);
@@ -13,5 +13,5 @@ for idx = 1:30
     fuzzyNetTesting(idx,2)= netOutput(idx);
 end
 
-save('dynFuzzyResults_V.mat', 'fuzzyNetTesting');
+save('dynFuzzyResults_H.mat', 'fuzzyNetTesting');
 
