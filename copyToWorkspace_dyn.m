@@ -1,4 +1,4 @@
-trainTable = load('features_dataset/dati_buoni/trainingSlicedSet_V.mat');
+trainTable = load('features_dataset/dati_buoni/trainingSlicedSet_H.mat');
 
 
 trainInput = [trainTable.table.power_integral];
