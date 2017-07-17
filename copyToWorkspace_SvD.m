@@ -12,5 +12,5 @@ trainData = permData(1:50, :);
 testData = permData(51:55, :);
 checkData = permData(56:60, :);
 
-%trainInput = normalizedStd.values;
-%trainOutput = [trainTable.table.out_isStatic];
+trainInput = normalizedStd.values;
+trainOutput = [trainTable.table.out_isStatic];
