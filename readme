@@ -1,1 +1,9 @@
-bla bla bla
+Project for the Intelligent Systems course at University of Pisa.
+Aim of the project is to build systems that recognize movement around a door, distinguishing between entering, exiting or passing by.
+The data provided has been recorded using RFID tags, one mobile on the person and one static on the wall.
+
+The systems are based on different technologies:
+- Pattern recognition with neural networks
+- Mamdani fuzzy classifier
+- Adaptive Neuro-Fuzzy Inference System
+- Clustering with self-organizing maps
